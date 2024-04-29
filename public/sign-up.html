@@ -1,105 +1,105 @@
 <!doctype html>
 <html lang="kr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <link rel="stylesheet" type="text/css" href="/sign-up.css" />
+    <link rel="stylesheet" type="text/css" href="/sign-up.css"/>
 
     <title>아무 말 대잔치</title>
-  </head>
+</head>
 
-  <body>
-    <header class="header">
-      <input class="move-sign-in-button" type="button" value="<" />
+<body>
+<header class="header">
+    <input class="move-sign-in-button" type="button" value="<"/>
 
-      <span class="header-text">
+    <span class="header-text">
         <a href="/posts">아무 말 대잔치</a>
       </span>
-    </header>
+</header>
 
-    <div class="content">
-      <section class="warp">
+<div class="content">
+    <section class="warp">
         <p class="content-title">회원가입</p>
 
         <form
-          id="sign-up-form"
-          action="/api/sign-up"
-          method="post"
-          enctype="multipart/form-data"
+                id="sign-up-form"
+                action="/api/sign-up"
+                method="post"
+                enctype="multipart/form-data"
         >
-          <p class="form-label">프로필 사진</p>
-          <p class="helper-text" id="profile-image-helper-text">
-            * 프로필 사진을 추가해주세요.
-          </p>
-          <div>
-            <label id="profile-image-label" for="profile-image-input">
-              <img id="profile-image" src="images/profile.png" />
-            </label>
+            <p class="form-label">프로필 사진</p>
+            <p class="helper-text" id="profile-image-helper-text">
+                * 프로필 사진을 추가해주세요.
+            </p>
+            <div>
+                <label id="profile-image-label" for="profile-image-input">
+                    <img id="profile-image" src="images/profile.png"/>
+                </label>
+                <input
+                        id="profile-image-input"
+                        type="file"
+                        name="profile-image"
+                        accept="image/*"
+                        required
+                />
+            </div>
+
+            <label class="form-label" for="email">이메일*</label>
             <input
-              id="profile-image-input"
-              type="file"
-              name="profile-image"
-              accept="image/*"
-              required
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="이메일을 입력하세요"
+                    required
             />
-          </div>
+            <p class="helper-text" id="email-helper-text">
+                * 이메일을 입력해주세요.
+            </p>
 
-          <label class="form-label" for="email">이메일*</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="이메일을 입력하세요"
-            required
-          />
-          <p class="helper-text" id="email-helper-text">
-            * 이메일을 입력해주세요.
-          </p>
+            <label class="form-label" for="password">비밀번호*</label>
+            <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="비밀번호를 입력하세요"
+                    required
+            />
+            <p class="helper-text" id="password-helper-text">
+                * 비밀번호를 입력해주세요
+            </p>
 
-          <label class="form-label" for="password">비밀번호*</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="비밀번호를 입력하세요"
-            required
-          />
-          <p class="helper-text" id="password-helper-text">
-            * 비밀번호를 입력해주세요
-          </p>
+            <label class="form-label" for="password-check">비밀번호 확인*</label>
+            <input
+                    type="password"
+                    id="password-check"
+                    name="password-check"
+                    placeholder="비밀번호를 한번 더 입력하세요"
+                    required
+            />
+            <p class="helper-text" id="password-check-helper-text">
+                * 비밀번호를 입력해주세요.
+            </p>
 
-          <label class="form-label" for="password-check">비밀번호 확인*</label>
-          <input
-            type="password"
-            id="password-check"
-            name="password-check"
-            placeholder="비밀번호를 한번 더 입력하세요"
-            required
-          />
-          <p class="helper-text" id="password-check-helper-text">
-            * 비밀번호를 입력해주세요.
-          </p>
+            <label class="form-label" for="nickname">닉네임*</label>
+            <input
+                    type="text"
+                    id="nickname"
+                    name="nickname"
+                    placeholder="닉네임을 입력하세요"
+                    required
+            />
+            <p class="helper-text" id="nickname-helper-text">
+                * 닉네임을 입력해주세요.
+            </p>
 
-          <label class="form-label" for="nickname">닉네임*</label>
-          <input
-            type="text"
-            id="nickname"
-            name="nickname"
-            placeholder="닉네임을 입력하세요"
-            required
-          />
-          <p class="helper-text" id="nickname-helper-text">
-            * 닉네임을 입력해주세요.
-          </p>
-
-          <input id="sign-up-button" type="submit" value="회원가입" />
+            <input id="sign-up-button" type="submit" value="회원가입"/>
         </form>
 
         <a class="move-sign-in-text" href="/sign-in">로그인하러 가기</a>
-      </section>
-    </div>
+    </section>
+</div>
 
-    <script src="/sign-up.js"></script>
-  </body>
+<script src="/sign-up.js" type="module"></script>
+</body>
 </html>
