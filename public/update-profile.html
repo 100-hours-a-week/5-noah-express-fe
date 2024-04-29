@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/update-profile.css" />
+
+    <title>아무 말 대잔치</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <span class="header-text">
+        <a href="/posts">아무 말 대잔치</a>
+      </span>
+
+      <img
+        class="profile-image"
+        src="/images/profile.png"
+        width="36px"
+        height="36px"
+      />
+
+      <div class="profile-image-dropdown">
+        <p>
+          <a href="/update-profile">회원정보수정</a>
+        </p>
+        <p>
+          <a href="/update-profile-password">비밀번호수정</a>
+        </p>
+        <p>
+          <a>로그아웃</a>
+        </p>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="warp">
+        <p class="content-title">회원정보 수정</p>
+
+        <form>
+          <p class="form-label">프로필 사진*</p>
+          <div>
+            <label id="profile-image2-label" for="profile-image2-input">
+              <img id="profile-image2" src="/images/profile.png" />
+            </label>
+            <input
+              id="profile-image2-input"
+              type="file"
+              name="profile-image"
+              accept="image/*"
+            />
+          </div>
+
+          <label class="form-label" for="email">이메일</label>
+          <p>49ehyeon42@gmail.com</p>
+
+          <label class="form-label" for="nickname">닉네임</label>
+          <input
+            type="text"
+            id="nickname"
+            name="nickname"
+            value="noah"
+            required
+          />
+          <p class="helper-text" id="nickname-helper-text"></p>
+
+          <!-- 임시로 버튼 구성 -->
+          <input id="update-profile-button" type="button" value="수정하기" />
+        </form>
+
+        <p id="move-delete-modal">회원 탈퇴</p>
+
+        <div class="update-complete-container">
+          <div id="toast-message">수정 완료</div>
+        </div>
+      </section>
+    </div>
+
+    <div id="modal-container">
+      <div id="delete-check-modal">
+        <div id="delete-check-modal-title">회원탈퇴 하시겠습니까?</div>
+        <div id="delete-check-modal-content">
+          작성된 게시글과 댓글은 삭제됩니다.
+        </div>
+
+        <div>
+          <button
+            class="delete-check-modal-button"
+            id="delete-check-modal-cancel-button"
+          >
+            취소
+          </button>
+          <button
+            class="delete-check-modal-button"
+            id="delete-check-modal-confirm-button"
+          >
+            확인
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/update-profile.js"></script>
+  </body>
+</html>
