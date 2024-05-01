@@ -29,7 +29,9 @@ document.querySelector('.move-posts').addEventListener('click', () => {
 // 드롭 다운 관련 로직
 const profileImageDropdown = document.querySelector('.profile-image-dropdown');
 
-document.querySelector('.profile-image').addEventListener('click', () => {
+const userImage = document.getElementById('user-image');
+
+userImage.addEventListener('click', () => {
     profileImageDropdown.classList.toggle('show');
 });
 
@@ -55,13 +57,28 @@ contentInput.addEventListener('change', () => {
     changeHelpTextAndButtonColor();
 });
 
+// TODO session이 없다면 401로 처리하기 때문에 브라우저 콘솔에 error 뜸, 고민
+fetch(`${SERVER_ADDRESS}:${SERVER_PORT}/api/users/image`, {
+    credentials: 'include',
+}).then((response) => {
+    if (!response.ok) {
+        alert('로그인이 필요합니다.');
+
+        window.location.href = '/sign-in';
+    } else {
+        response.json().then((json) => {
+            userImage.src = `${SERVER_ADDRESS}:${SERVER_PORT}/${json.imageUrl}`;
+        });
+    }
+});
+
 const createPostForm = document.getElementById('create-post-form');
 
 createPostForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     fetch(`${SERVER_ADDRESS}:${SERVER_PORT}/api/posts`, {
-        method: 'POST', body: new FormData(createPostForm),
+        method: 'POST', body: new FormData(createPostForm), credentials: 'include',
     })
         .then((response) => {
             if (!response.ok) {

@@ -31,7 +31,9 @@ document.querySelector('.move-page-button').addEventListener('click', () => {
 // 드롭다운 메뉴 관련 로직
 const profileImageDropdown = document.querySelector('.profile-image-dropdown');
 
-document.querySelector('.profile-image').addEventListener('click', () => {
+const userImage = document.getElementById('user-image');
+
+userImage.addEventListener('click', () => {
     profileImageDropdown.classList.toggle('show');
 });
 
@@ -57,6 +59,21 @@ contentInput.addEventListener('change', () => {
     changeHelpTextAndButtonColor();
 });
 
+// TODO session이 없다면 401로 처리하기 때문에 브라우저 콘솔에 error 뜸, 고민
+fetch(`${SERVER_ADDRESS}:${SERVER_PORT}/api/users/image`, {
+    credentials: 'include',
+}).then((response) => {
+    if (!response.ok) {
+        alert('로그인이 필요합니다.');
+
+        window.location.href = '/sign-in';
+    } else {
+        response.json().then((json) => {
+            userImage.src = `${SERVER_ADDRESS}:${SERVER_PORT}/${json.imageUrl}`;
+        });
+    }
+});
+
 const updatePostForm = document.getElementById('update-post-form');
 
 updatePostForm.addEventListener('submit', (event) => {
@@ -66,19 +83,18 @@ updatePostForm.addEventListener('submit', (event) => {
     formDate.set('content', contentInput.value);
 
     fetch(`${SERVER_ADDRESS}:${SERVER_PORT}/api/posts/${postId}`, {
-        method: 'PATCH', body: formDate,
+        method: 'PATCH', body: formDate, credentials: 'include',
     }).then((response) => {
         if (!response.ok) {
-            throw new Error('게시물 수정 실패');
+            if (response.status === 403) {
+                alert('게시글 작성자가 아닙니다.');
+            } else {
+                alert('게시물 수정 실패');
+            }
         }
-
         window.location.href = `/posts/${postId}`;
     }).catch((error) => {
-        alert(error);
 
-        console.error(error);
-
-        window.location.href = '/posts';
     });
 });
 
