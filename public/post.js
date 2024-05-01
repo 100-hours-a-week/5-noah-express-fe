@@ -15,7 +15,9 @@ document.querySelector('.move-posts').addEventListener('click', () => {
 // 드롭다운 메뉴 로직
 const profileImageDropdown = document.querySelector('.profile-image-dropdown');
 
-document.querySelector('.profile-image').addEventListener('click', () => {
+const userImage = document.getElementById('user-image');
+
+userImage.addEventListener('click', () => {
     profileImageDropdown.classList.toggle('show');
 });
 
@@ -165,22 +167,30 @@ document
     .getElementById('post-delete-modal-confirm-button')
     .addEventListener('click', () => {
         fetch(`${SERVER_ADDRESS}:${SERVER_PORT}/api/posts/${postId}`, {
-            method: 'DELETE',
+            method: 'DELETE', credentials: 'include',
         }).then((response) => {
             if (!response.ok) {
-                throw new Error('삭제 실패');
+                if (response.status === 401) {
+                    alert('로그인이 필요합니다.');
+
+                    window.location.href = '/sign-in';
+                } else if (response.status === 403) {
+                    alert('게시글 작성자가 아닙니다.');
+                } else {
+                    alert('게시글 삭제 에러');
+
+                    window.location.href = '/posts';
+                }
+            } else {
+                window.location.href = '/posts';
             }
         }).catch((error) => {
-            alert(error.message);
-
             console.error(error);
         }).finally(() => {
             // 스크롤 방지 해제
             document.body.classList.remove('stop-scroll');
 
             postDeleteModal.style.display = 'none';
-
-            window.location.href = '/posts';
         });
     });
 
@@ -205,17 +215,25 @@ document
                 'Content-Type': 'application/json',
             }, body: JSON.stringify({
                 id: deleteCommentId,
-            }),
+            }), credentials: 'include',
         }).then((response) => {
             if (!response.ok) {
-                throw new Error('댓글 삭제 실패');
+                if (response.status === 401) {
+                    alert('로그인이 필요합니다.');
+
+                    window.location.href = '/sign-in';
+                } else if (response.status === 403) {
+                    alert('댓글 작성자가 아닙니다.');
+                } else {
+                    alert('댓글 작성 에러');
+
+                    window.location.href = '/posts';
+                }
+            } else {
+                window.location.href = `/posts/${postId}`;
             }
-
-            window.location.href = `/posts/${postId}`;
         }).catch((error) => {
-            alert(error.message);
-
-            window.location.href = '/posts';
+            console.error(error);
         }).finally(() => {
             // 필요한가?
             // 스크롤 방지 해제
@@ -224,6 +242,19 @@ document
             commentDeleteModal.style.display = 'none';
         });
     });
+
+// TODO session이 없다면 401로 처리하기 때문에 브라우저 콘솔에 error 뜸, 고민
+fetch(`${SERVER_ADDRESS}:${SERVER_PORT}/api/users/image`, {
+    credentials: 'include',
+}).then((response) => {
+    if (!response.ok) {
+        userImage.style.display = 'none';
+    } else {
+        response.json().then((json) => {
+            userImage.src = `${SERVER_ADDRESS}:${SERVER_PORT}/${json.imageUrl}`;
+        });
+    }
+});
 
 const postHeader = document.getElementById('post-header');
 const postBody = document.getElementById('post-body');
@@ -309,15 +340,22 @@ createCommentForm.addEventListener('submit', (event) => {
         }, body: JSON.stringify({
             content: commentInput.value,
         }),
+        credentials: 'include',
     }).then((response) => {
         if (!response.ok) {
-            throw new Error('댓글 작성 실패');
+            if (response.status === 401) {
+                alert('로그인이 필요합니다.');
+
+                window.location.href = `/sign-in`;
+            } else {
+                alert('오류');
+
+                window.location.href = `/posts`;
+            }
+        } else {
+            window.location.href = `/posts/${postId}`;
         }
-
-        window.location.href = `/posts/${postId}`;
     }).catch((error) => {
-        alert(error.message);
-
-        window.location.href = '/posts';
+        // 어렵다
     });
 });

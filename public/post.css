@@ -1,89 +1,91 @@
 body {
-  background-color: #f4f5f7;
+    background-color: #f4f5f7;
 }
 
 .header {
-  height: 104px;
+    height: 104px;
 
-  text-align: center;
+    text-align: center;
 
-  border-bottom: 1px solid #000000;
+    border-bottom: 1px solid #000000;
 }
 
 .header-text {
-  margin-left: 50px;
+    margin-left: 50px;
 
-  padding-top: 20px;
+    padding-top: 20px;
 
-  font-size: 50px;
+    font-size: 50px;
 }
 
 .header-text > a {
-  color: #000000;
-  text-decoration: none;
-  font-weight: bold;
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .move-posts {
-  width: 30px;
-  height: 30px;
+    width: 30px;
+    height: 30px;
 
-  border: none;
+    border: none;
 
-  font-size: 30px;
-  font-weight: bold;
+    font-size: 30px;
+    font-weight: bold;
 
-  background-color: transparent;
+    background-color: transparent;
 }
 
-.profile-image {
-  margin-left: 70px; /* 이미지를 오른쪽으로 정렬 */
+#user-image {
+    margin-left: 70px; /* 이미지를 오른쪽으로 정렬 */
+    width: 36px;
+    height: 36px;
 }
 
 .profile-image-dropdown {
-  display: none; /* 숨기기 */
-  background-color: #c0c0c0;
+    display: none; /* 숨기기 */
+    background-color: #c0c0c0;
 
-  max-width: 200px;
+    max-width: 200px;
 
-  position: absolute;
-  right: 750px;
+    position: absolute;
+    right: 750px;
 }
 
 .profile-image-dropdown.show {
-  display: block;
+    display: block;
 }
 
 .profile-image-dropdown > p > a {
-  color: #000000;
-  text-decoration: none;
+    color: #000000;
+    text-decoration: none;
 }
 
 .content {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .warp {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 592px;
-  background-color: transparent;
-  padding: 60px 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 592px;
+    background-color: transparent;
+    padding: 60px 0;
 }
 
 #post-title {
-  text-align: left;
+    text-align: left;
 
-  font-size: 24px;
-  font-weight: bold;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 #post-info-container {
-  display: flex;
-  align-items: center;
-  /* 자식 요소들을 수직 가운데 정렬 */
+    display: flex;
+    align-items: center;
+    /* 자식 요소들을 수직 가운데 정렬 */
 }
 
 /* .image {
@@ -91,221 +93,221 @@ body {
 } */
 
 #post-author-image {
-  width: 36px;
-  height: 36px;
-  margin-right: 10px;
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
 }
 
 #post-author-name {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 #post-created-date {
-  margin-left: 50px;
+    margin-left: 50px;
 }
 
 .post-button {
-  width: 60px;
+    width: 60px;
 
-  margin-left: 10px;
+    margin-left: 10px;
 
-  font-size: 15px;
+    font-size: 15px;
 
-  border: 1px solid #aca0eb;
-  border-radius: 6px;
+    border: 1px solid #aca0eb;
+    border-radius: 6px;
 
-  background-color: transparent;
+    background-color: transparent;
 }
 
 #post-update-button {
-  margin-left: 116px;
+    margin-left: 116px;
 }
 
 .horizontal-rule {
-  width: 100%;
-  height: 1px;
-  border: 0;
-  background-color: #00000029;
+    width: 100%;
+    height: 1px;
+    border: 0;
+    background-color: #00000029;
 
-  margin-top: 30px;
-  margin-bottom: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 #post-image {
-  margin-right: 10px;
-  margin-bottom: 30px;
-  
-  width: 544px;
-  height: 306px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+
+    width: 544px;
+    height: 306px;
 }
 
 .etc-button {
-  width: 116px;
-  height: 77px;
+    width: 116px;
+    height: 77px;
 
-  border: none;
-  border-radius: 16px;
+    border: none;
+    border-radius: 16px;
 
-  background-color: #d9d9d9;
+    background-color: #d9d9d9;
 
-  font-size: 20px;
-  font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .edit-comment {
-  height: 169px;
+    height: 169px;
 
-  background-color: #ffffff;
+    background-color: #ffffff;
 
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 
-  border-radius: 16px;
+    border-radius: 16px;
 }
 
 .form-comment {
-  width: 100%;
-  height: 110px;
+    width: 100%;
+    height: 110px;
 
-  box-sizing: border-box;
+    box-sizing: border-box;
 
-  border: none;
+    border: none;
 
-  border-radius: 16px;
+    border-radius: 16px;
 }
 
 .horizontal-rule2 {
-  margin-bottom: 5px;
+    margin-bottom: 5px;
 
-  background-color: #00000029;
+    background-color: #00000029;
 }
 
 input[type='submit'] {
-  width: 138px;
-  height: 39px;
+    width: 138px;
+    height: 39px;
 
-  box-sizing: border-box;
+    box-sizing: border-box;
 
-  margin-right: 10px;
+    margin-right: 10px;
 
-  border: none;
+    border: none;
 
-  border-radius: 16px;
+    border-radius: 16px;
 
-  background-color: #aca0eb;
+    background-color: #aca0eb;
 
-  color: #ffffff;
+    color: #ffffff;
 
-  font-size: 16px;
+    font-size: 16px;
 }
 
 .comment-info {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .comment-author-image {
-  margin-right: 10px;
-  width: 36px;
-  height: 36px;
+    margin-right: 10px;
+    width: 36px;
+    height: 36px;
 }
 
 .comment-author-name {
-  font-size: 15px;
-  font-weight: bold;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .comment-date-text {
-  margin-left: 50px;
+    margin-left: 50px;
 
-  font-size: 14px;
+    font-size: 14px;
 }
 
 .comment-content {
-  display: block;
+    display: block;
 
-  font-size: 15px;
+    font-size: 15px;
 
-  margin-left: 45px;
+    margin-left: 45px;
 }
 
 .comment-button-container {
-  margin-left: 180px;
+    margin-left: 180px;
 }
 
 .comment-button {
-  margin-left: 3px;
-  margin-right: 3px;
+    margin-left: 3px;
+    margin-right: 3px;
 
-  border-color: #aca0eb;
-  border-radius: 8px;
+    border-color: #aca0eb;
+    border-radius: 8px;
 
-  background-color: #ffffff;
+    background-color: #ffffff;
 }
 
 /* body 스크롤 방지 */
 .stop-scroll {
-  height: 100%;
-  overflow: hidden;
+    height: 100%;
+    overflow: hidden;
 }
 
 .modal-container {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .modal {
-  position: absolute;
-  background-color: #ffffff;
-  width: 408px;
-  height: 242px;
-  padding: 15px;
+    position: absolute;
+    background-color: #ffffff;
+    width: 408px;
+    height: 242px;
+    padding: 15px;
 
-  border-radius: 12px;
+    border-radius: 12px;
 
-  text-align: center;
+    text-align: center;
 }
 
 .modal-title {
-  margin-top: 30px;
-  margin-bottom: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 
-  font-size: 24px;
-  font-weight: bold;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .modal-content {
-  margin-top: 30px;
-  margin-bottom: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 
-  font-size: 20px;
+    font-size: 20px;
 }
 
 .modal-button {
-  margin-left: 10px;
-  margin-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
 
-  width: 127px;
-  height: 44px;
+    width: 127px;
+    height: 44px;
 
-  border: none;
-  border-radius: 20px;
+    border: none;
+    border-radius: 20px;
 }
 
 .modal-cancel-button {
-  background-color: #242424;
+    background-color: #242424;
 
-  color: #ffffff;
+    color: #ffffff;
 }
 
 .modal-confirm-button {
-  background-color: #c4a5fa;
+    background-color: #c4a5fa;
 
-  color: #000000;
+    color: #000000;
 }

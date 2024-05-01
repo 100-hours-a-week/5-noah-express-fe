@@ -5,15 +5,29 @@ const SERVER_PORT = '8000';
 // 드롭다운 관련 로직
 const profileImageDropdown = document.querySelector('.profile-image-dropdown');
 
-document.querySelector('.profile-image').addEventListener('click', () => {
+const userImage = document.getElementById('user-image');
+
+userImage.addEventListener('click', () => {
     profileImageDropdown.classList.toggle('show');
 });
 
-document.getElementById('edit-post-button').addEventListener('click', () => {
+const editPostButton = document.getElementById('edit-post-button');
+
+editPostButton.addEventListener('click', () => {
     window.location.href = '/edit-post';
 });
 
-/* 2주차 2-2. Fetch 적용 */
+const signOutText = document.getElementById('sign-out-text');
+
+signOutText.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    fetch(`${SERVER_ADDRESS}:${SERVER_PORT}/api/sign-out`, {
+        method: 'DELETE', credentials: 'include',
+    }).then((response) => {
+        window.location.href = '/sign-in';
+    });
+});
 
 // 글자 밀림 방지
 function changeUnit(value) {
@@ -31,6 +45,20 @@ function changeUnit(value) {
 }
 
 const postContainer = document.querySelector('.post-container');
+
+// TODO session이 없다면 401로 처리하기 때문에 브라우저 콘솔에 error 뜸, 고민
+fetch(`${SERVER_ADDRESS}:${SERVER_PORT}/api/users/image`, {
+    credentials: 'include',
+}).then((response) => {
+    if (!response.ok) {
+        userImage.style.display = 'none';
+        editPostButton.style.display = 'none';
+    } else {
+        response.json().then((json) => {
+            userImage.src = `${SERVER_ADDRESS}:${SERVER_PORT}/${json.imageUrl}`;
+        });
+    }
+});
 
 fetch(`${SERVER_ADDRESS}:${SERVER_PORT}/api/posts`)
     .then((response) => {
